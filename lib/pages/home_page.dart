@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_drawer.dart';
+import 'package:food_delivery_app/components/my_silver_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,8 +15,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
       drawer: MyDrawer(),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          MySilverAppBar(
+            child: Text('Hello'),
+            title: Text('title'),
+          ),
+        ],
+        body: Container(color:Colors.blue),
+      ),
     );
   }
 }
